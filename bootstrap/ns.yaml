@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: plex
+  labels:
+    name: plex
+    env: dev
+    role: sandbox
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: infra
+  labels:
+    name: infra
+    env: dev
+    role: infra
