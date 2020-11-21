@@ -1,0 +1,35 @@
+alertmanager:
+  persistentVolume:
+    size: 1Gi
+
+server:
+  image:
+    repository: prom/prometheus
+    tag: v2.21.0
+
+  persistentVolume:
+    size: 2Gi
+
+  ## Prometheus data retention period
+  retention: "7d"
+
+extraScrapeConfigs: |
+  - job_name: 'plex-exporter'
+    metrics_path: /metrics
+    scrape_interval: 5s
+    scrape_timeout: 3s
+    static_configs:
+      - targets:
+        - exporter-plex-exporter.plex.svc.cluster.local:9090
+        labels:
+          component: 'plex'
+
+  - job_name: grafana
+    metrics_path: /metrics
+    scrape_interval: 1m
+    scrape_timeout: 10s
+    static_configs:
+      - targets:
+        - grafana:3000
+        labels:
+          component: 'infra'

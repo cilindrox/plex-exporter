@@ -1,0 +1,21 @@
+image:
+  repository: plexinc/pms-docker
+  tag: '1.20.5.3600-47c0d9038'
+
+kubePlex:
+  enabled: true
+  image:
+    repository: quay.io/munnerz/kube-plex
+    tag: latest
+
+timezone: America/Montevideo
+
+persistence:
+  transcode:
+    size: 2Gi
+
+  data:
+    size: 2Gi
+
+  config:
+    size: 2Gi

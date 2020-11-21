@@ -1,0 +1,13 @@
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+    - name: Prometheus
+      type: prometheus
+      url: http://prom-prometheus-server
+      access: proxy
+      isDefault: true
+
+persistence:
+  enabled: true
+  size: 1Gi
