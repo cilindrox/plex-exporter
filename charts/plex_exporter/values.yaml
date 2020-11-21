@@ -1,0 +1,57 @@
+# Default values for plex_exporter.
+
+replicaCount: 1
+
+image:
+  repository: plex_exporter
+  tag: '0.0.1'
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: false
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+## Plex Server config
+#
+server:
+  address: "plex"
+  port: '32400'
+  # You'll need to replace the token with the appropriate X-Plex-Token
+  # ref: https://support.plex.tv/articles/204059436-finding-an-authentication-token-x-plex-token
+  token: "CHANGEME"
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 9090
+
+resources: {}
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
