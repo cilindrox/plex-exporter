@@ -40,5 +40,5 @@ Prometheus instance instead.
 Service account is also disabled by default, but best practices recommend
 assigning one.
 
-[plex_exporter]: https://github.com/othalla/plex_exporter.git
+[othalla/plex_exporter]: https://github.com/othalla/plex_exporter.git
 [x-plex-token]: https://support.plex.tv/articles/204059436-finding-an-authentication-token-x-plex-token/
