@@ -115,6 +115,7 @@ the driver.
 helm diff upgrade --install plex ./charts/kube-plex \
   --namespace plex \
   -f kube-plex.yaml \
+  --set 'claimToken=MY_CLAIM' \
   --set 'persistence.hostVolume=/hosthome/music'
 ```
 
@@ -126,6 +127,13 @@ hook][helm-post-render] that [applies a kustomization][kustomize-post].
 
 A [chart is included](./charts/plex_exporter) for exposing PMS metrics in
 prometheus format.
+
+```bash
+helm upgrade --install \
+  --namespace plex  \
+  exporter ./charts/plex_exporter \
+  --set 'server.token=MY-TOKEN'
+```
 
 Alternatively, the exporter can be added as a sidecar to existing chart, but
 since it requires a server token to auth against the api which can only be
